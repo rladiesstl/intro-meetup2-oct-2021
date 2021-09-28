@@ -1,6 +1,6 @@
-## Materials for the R-Ladies St. Louis meetup on October 5, 2021
+## Materials for the R-Ladies St. Louis meetup on October 12, 2021
 
-### Getting Started with R
+### Introduction to Tidyverse
 
 About R-Ladies St. Louis Intro slides:https://rladiesstl.github.io/intro-meetup1-oct-2021/
 
