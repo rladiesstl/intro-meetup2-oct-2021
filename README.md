@@ -6,6 +6,9 @@ About R-Ladies St. Louis Intro slides:https://rladiesstl.github.io/intro-meetup1
 
 Materials for the workshop in this repo include:
 
+  - tidyverse-cheatsheet.Rmd
+  - Slides will be sent out in the chat on Zoom
+
 ### Preparing for the Workshop
 
 Please install R and RStudio prior to the workshop (https://www.youtube.com/watch?v=NZxSA80lF1I)

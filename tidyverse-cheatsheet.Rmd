@@ -1,0 +1,127 @@
+---
+title: "Let's Learn Dplyr!"
+author: "Jessica McKay"
+date: "10/8/2021"
+output: word_document
+---
+
+## Chunk 1
+First, it's important for us to set up our markdown file. Let's do that!
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Chunk 2
+Now, let's download our data and get ready to learn about penguins!
+```{r data and packages, include=FALSE}
+
+#### Load in the data 
+install.packages("palmerpenguins")
+library(palmerpenguins)
+path_to_file("penguins_raw.csv")
+data <- penguins
+ 
+### Load in the needed packages
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("dplyr")
+library(dplyr)
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+### Chunk 3
+Now, that we have the dplyr package downloaded, we can start to use pipes (%>%). 
+Let's check out that data! Run the line before to view the data. 
+
+```{r view data, include=FALSE}
+#### Load in the data 
+data %>%
+  view()
+```
+
+### Chunk 4
+That's pretty cool data! Now, I'm curious... How does the data change when we filter for just the female penguins?
+```{r explore the data 1}
+
+data %>%
+  filter(sex == "female") %>%
+  view()
+```
+
+### Chunk 5
+hmmm, interesting! Now, let's just look at a few variables of interest.
+```{r explore the data 2}
+
+data %>%
+  filter(sex == "female") %>%
+  select(island, flipper_length_mm, bill_length_mm, sex) %>%
+  view()
+
+```
+
+### Chunk 6
+It would be easier to read through the data, if we arrange the data in a way that makes it easier to read through... Let's use the arrange command to do so!
+
+```{r explore the data 3}
+new_data <-  data %>%
+  filter(sex == "female") %>%
+  select(island, flipper_length_mm, bill_length_mm, sex, year) %>%
+  arrange(island) %>%
+  na.omit()
+```
+
+
+### Chunk 8
+Now, let's take a look! How does it look?
+```{r explore the data 4}
+new_data %>%
+  view()
+```
+
+
+### Chunk 9
+Next, let's take a look at average flipper length among the penguins in our data. Be sure to use the summary command here! It will enable you to make neat little summary tables. 
+```{r explore the data 5}
+
+### New Data
+new_data %>%
+ group_by(sex) %>%
+  
+  summarize(mean(flipper_length_mm)) %>%
+  na.omit() 
+
+
+### Original Data
+
+data %>%
+  group_by(sex) %>%
+  summarize(mean(flipper_length_mm)) %>%
+  na.omit()
+```
+
+### Chunk 10
+That is some interesting data... I wonder how average flipper length changed across years among our sample of female penguins? 
+Let's create a neat summary table!
+```{r explore the data 6}
+
+ table_new_data  <- new_data %>%
+    mutate(new_year = case_when(year == "2007" ~ "'07", year == "2008" ~ "`08", year =="2009" ~ "`09")) %>%
+    group_by(`Year` = new_year) %>%
+    summarize(`Average Flipper Length` = mean(flipper_length_mm)) 
+
+```
+
+
+### Chunk 11
+Let's take a look. What trends do you see?
+```{r explore the data 7}
+ table_new_data  %>%
+  print()
+```
+
+If time permits, let's see if we find similar trends for male penguins! Then, let's compare male and female penguins!
+
+
+
+
