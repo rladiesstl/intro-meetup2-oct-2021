@@ -2,7 +2,7 @@
 
 ### Introduction to Tidyverse
 
-About R-Ladies St. Louis Intro slides:https://rladiesstl.github.io/intro-meetup1-oct-2021/
+About R-Ladies St. Louis Intro slides:https://rladiesstl.github.io/intro-meetup2-oct-2021/
 
 Materials for the workshop in this repo include:
 
